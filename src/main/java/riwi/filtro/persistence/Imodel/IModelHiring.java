@@ -1,4 +1,7 @@
 package riwi.filtro.persistence.Imodel;
 
-public interface IModelHiring {
+import riwi.filtro.entitie.HiringEntity;
+import riwi.filtro.persistence.CRUD.*;
+
+public interface IModelHiring extends Create<HiringEntity>, ReadAll<HiringEntity>, Read<String,HiringEntity>, Update<HiringEntity>, Delete<Integer> {
 }

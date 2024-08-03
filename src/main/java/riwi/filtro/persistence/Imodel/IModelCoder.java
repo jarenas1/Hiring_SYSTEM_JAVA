@@ -1,9 +1,7 @@
 package riwi.filtro.persistence.Imodel;
 
-import riwi.filtro.persistence.CRUD.Delete;
-import riwi.filtro.persistence.CRUD.Read;
-import riwi.filtro.persistence.CRUD.ReadAll;
-import riwi.filtro.persistence.CRUD.Update;
+import riwi.filtro.entitie.CoderEntity;
+import riwi.filtro.persistence.CRUD.*;
 
-public interface IModelCoder extends Read<>, ReadAll<>, Update<>, Delete<>, {
+public interface IModelCoder extends Read<String,CoderEntity>, ReadAll<CoderEntity>, Update<CoderEntity>, Delete<String>, Create<CoderEntity> {
 }
