@@ -8,6 +8,9 @@ import riwi.filtro.tools.status1;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HiringModel_Implementation implements IModelHiring{
@@ -43,13 +46,46 @@ public class HiringModel_Implementation implements IModelHiring{
     public boolean delete(Integer identidicador) {
         PreparedStatement ps;
         Connection con = ConnectionDB.conectar();
-        String query = 
+        String query = "DELETE FROM contratacion WHERE id = ?";
+
+        try {
+            ps = con.prepareStatement(query);
+
+            ps.setInt(1,identidicador);
+            ps.execute();
+            System.out.println("contratacion eliminada");
+        }catch (SQLException e){
+            System.out.println("No se pudo eliminar la contratacion");
+        }
         return false;
     }
 
     @Override
-    public List<HiringEntity> read(String dato) {
-        return null;
+    public List<HiringEntity> read(Integer dato) {
+        List<HiringEntity> contrataciones = new ArrayList<>();
+        Connection con = ConnectionDB.conectar();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "Select * from contratacion WHERE id = ?";
+
+        try {
+            ps = con.prepareStatement(query);
+            ps.setInt(1, dato);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()){
+                //TRAEMOS EL ENUM DE MYSQL Y LO VOLVEMOS A ENUM DE JAVA
+                String stats = rs.getString("estado");
+                status1 statsString = status1.valueOf(stats);
+                HiringEntity hiringEntity = new HiringEntity(statsString,rs.getInt("vacante_id"),rs.getInt("coder_id"),rs.getDouble("salario"),rs.getString("fecha_aplicacion"));
+                contrataciones.add(hiringEntity);
+            }
+
+        }catch (Exception e){
+            System.out.println("No se pudieron traer las contrataciones  "+e.getMessage());
+        }
+        return contrataciones;
     }
 
     @Override
