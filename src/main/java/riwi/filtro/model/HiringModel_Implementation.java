@@ -29,7 +29,7 @@ public class HiringModel_Implementation implements IModelHiring{
             ps.setInt(1,objeto.getIdCoder());
             ps.setInt(2,objeto.getIdVacant());
             ps.setDouble(3,objeto.getSalary());
-            ps.setString(4, status1.ACTIVO.name());
+            ps.setString(4, objeto.getStatusHiring().name());
 
             ps.execute();
             System.out.println("contratacion creada");
