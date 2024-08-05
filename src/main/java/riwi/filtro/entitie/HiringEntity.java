@@ -5,26 +5,23 @@ public class HiringEntity {
     private int id;
     private String statusHiring;
     private int idVacant;
-    private int idCompany;
     private int idCoder;
     private double salary;
 
     public HiringEntity() {
     }
 
-    public HiringEntity(int id, String statusHiring, int idVacant, int idCompany, int idCoder, double salary) {
+    public HiringEntity(int id, String statusHiring, int idVacant, int idCoder, double salary) {
         this.id = id;
         this.statusHiring = statusHiring;
         this.idVacant = idVacant;
-        this.idCompany = idCompany;
         this.idCoder = idCoder;
         this.salary = salary;
     }
 
-    public HiringEntity(String statusHiring, int idVacant, int idCompany, int idCoder, double salary) {
+    public HiringEntity(String statusHiring, int idVacant, int idCoder, double salary) {
         this.statusHiring = statusHiring;
         this.idVacant = idVacant;
-        this.idCompany = idCompany;
         this.idCoder = idCoder;
         this.salary = salary;
     }
@@ -51,14 +48,6 @@ public class HiringEntity {
 
     public void setIdVacant(int idVacant) {
         this.idVacant = idVacant;
-    }
-
-    public int getIdCompany() {
-        return idCompany;
-    }
-
-    public void setIdCompany(int idCompany) {
-        this.idCompany = idCompany;
     }
 
     public int getIdCoder() {
