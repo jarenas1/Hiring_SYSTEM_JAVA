@@ -5,22 +5,37 @@ public class VacancyEntity {
     private int id;
     private String title;
     private String status;
-    private int idCompany;
+    private int id_Company;
+    private String description;
+    private String technology;
+
 
     public VacancyEntity() {
     }
 
-    public VacancyEntity(int id, String title, String status, int idCompany) {
+    public VacancyEntity(String description, int id, int id_Company, String status, String technology, String title) {
+        this.description = description;
         this.id = id;
-        this.title = title;
+        this.id_Company = id_Company;
         this.status = status;
-        this.idCompany = idCompany;
+        this.technology = technology;
+        this.title = title;
     }
 
-    public VacancyEntity(String title, String status, int idCompany) {
-        this.title = title;
+    public VacancyEntity(String description, int id_Company, String status, String technology, String title) {
+        this.description = description;
+        this.id_Company = id_Company;
         this.status = status;
-        this.idCompany = idCompany;
+        this.technology = technology;
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getId() {
@@ -31,12 +46,12 @@ public class VacancyEntity {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public int getId_Company() {
+        return id_Company;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setId_Company(int id_Company) {
+        this.id_Company = id_Company;
     }
 
     public String getStatus() {
@@ -47,11 +62,20 @@ public class VacancyEntity {
         this.status = status;
     }
 
-    public int getIdCompany() {
-        return idCompany;
+    public String getTechnology() {
+        return technology;
     }
 
-    public void setIdCompany(int idCompany) {
-        this.idCompany = idCompany;
+    public void setTechnology(String technology) {
+        this.technology = technology;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
+
